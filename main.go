@@ -3,9 +3,7 @@ package main
 import(
 	"encoding/json"
 	"log"
-	"math/rand"
 	"net/http"
-	"strconv"
 	"github.com/gorilla/mux"	
 )
 
@@ -36,7 +34,7 @@ func main(){
 	r := mux.NewRouter()
 
 	// Route handlers enpoint
-	r.HandleFuc("/books", getBooks).Methods("GET")
+	r.HandleFunc("/books", getBooks).Methods("GET")
 
 	// Start server
 	log.Fatal(http.ListenAndServe(":8080", r))
