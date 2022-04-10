@@ -32,10 +32,14 @@ func getBooks(w http.ResponseWriter, r *http.Request){
 func main(){
 	// Init router
 	r := mux.NewRouter()
+	
+	// Hardcoded data - @todo: add database
+	books = append(books, Book{ID: "1", Isbn: "438227", Title: "Book One", Author: &Author{Firstname: "John", Lastname: "Doe"}})
+	books = append(books, Book{ID: "2", Isbn: "454555", Title: "Book Two", Author: &Author{Firstname: "Steve", Lastname: "Smith"}})
 
 	// Route handlers enpoint
 	r.HandleFunc("/books", getBooks).Methods("GET")
 
 	// Start server
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Fatal(http.ListenAndServe("127.0.0.1:3000", r))
 }
